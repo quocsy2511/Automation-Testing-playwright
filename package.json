@@ -1,0 +1,15 @@
+{
+  "name": "playwright-auto-testing",
+  "version": "1.0.0",
+  "description": "Automated software testing with playwright",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "six",
+  "license": "ISC",
+  "dependencies": {
+    "@playwright/test": "^1.49.1",
+    "prettier": "^3.4.2"
+  }
+}
