@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test'
+import { assertTitle, loadingPage } from '../helpers'
 
 test('Should be show text', async ({ page }) => {
   await page.goto('https://example.com/')
@@ -37,41 +38,63 @@ test.skip('Selectors', async ({ page }) => {
   await page.click('//button') //Chọn tất cả các thẻ <button> trong DOM.
 })
 
-
 //nhóm các đoạn test lại với nhau
-test.describe('group test case' , ()=>{
+test.describe('group test case', () => {
   test('working with login from', async ({ page }) => {
     //truy cập vô trang
     await page.goto('http://zero.webappsecurity.com/')
-  
+
     //chuyển đổi trang
     await page.click('#signin_button')
-  
+
     //nhập form login và nhấn submit
     await page.fill('#user_login', 'some username')
     await page.fill('#user_password', 'some passwords')
     await page.click('text=Sign in')
-  
+
     //kết quả mong đợi
     const errorMessage = await page.locator('.alert-error')
     await expect(errorMessage).toContainText('Login and/or password are wrong.')
   })
-  
+
   // assertion kiểm tra tính đúng/sai của điều kiện trong quá trình test
   // khi thêm @myTag có thể tự chạy riêng lẻ test case bằng lệnh npx playwright test --grep @myTag
-  // nếu muốn chạy case còn lại mà ko chạy case test này thì dùng npx playwright test --grep-invert @myTag     
+  // nếu muốn chạy case còn lại mà ko chạy case test này thì dùng npx playwright test --grep-invert @myTag
   test('Assertions @myTag', async ({ page }) => {
     await page.goto('https://example.com/')
-  
+
     await expect(page).toHaveURL('https://example.com/')
     await expect(page).toHaveTitle('Example Domain')
-  
+
     const elementH1 = await page.locator('h1')
     await expect(elementH1).toHaveCount(1) //kiểm tra số lượng của các phần tử được tìm thấy
     await expect(elementH1).toContainText('Example Domain')
     await expect(elementH1).toBeVisible()
-  
+
     const nonExistentElementH5 = await page.locator('h5')
     await expect(nonExistentElementH5).not.toBeVisible()
   })
+})
+
+// parallel các test chạy song song với nhau  thay vì lần lượt chỉ dành cho group
+test.describe.parallel('hooks', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto('https://example.com/')
+  })
+
+  test('Screenshots', async ({ page }) => {
+    await page.screenshot({ path: 'screenshot.png', fullPage: true })
+  })
+
+  test('Screenshot-element', async ({ page }) => {
+    const element = await page.$('h1')
+
+    await element?.screenshot({ path: 'screenshot-element.png' })
+  })
+})
+
+test('customer-helper', async ({ page }) => {
+  await loadingPage(page)
+  // await page.pause()
+  await assertTitle(page)
 })

@@ -11,8 +11,8 @@ const config: PlaywrightTestConfig = {
     viewport: { width: 1280, height: 720 },
     actionTimeout: 15000, //thời gian để thực test case từ click button to select selector
     ignoreHTTPSErrors: true,
-    video: 'off',
-    screenshot: 'off',
+    video: 'retain-on-failure', //chế độ này chỉ lưu lại khi mà test fail
+    screenshot: 'only-on-failure', //chế độ này chỉ lưu lại khi mà test fail
   },
   //nền tảng trinh duyet chạy test
   projects: [
