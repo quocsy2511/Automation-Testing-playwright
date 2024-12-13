@@ -1,17 +1,27 @@
 import { expect, test } from '@playwright/test'
+import { HomePage } from '../../page-objects/HomePage'
+import { LoginPage } from '../../page-objects/LoginPage'
+import { Navbar, TabNameInitial } from '../../page-objects/components/Navbar'
 
 test.describe('Transfer fundamental', () => {
+  let homePage: HomePage
+  let loginPage: LoginPage
+  let navbar: Navbar
+
   test.beforeEach(async ({ page }) => {
-    await page.goto('http://zero.webappsecurity.com/index.html')
-    await page.click('#signin_button')
-    await page.fill('#user_login', 'username')
-    await page.fill('#user_password', 'password')
-    await page.click('text=Sign in')
-    await page.goto('http://zero.webappsecurity.com/bank/account-summary.html')
+    loginPage = new LoginPage(page)
+    homePage = new HomePage(page)
+    navbar = new Navbar(page)
+
+    await homePage.visit()
+    await homePage.clickOnSignIn()
+    await loginPage.login({ username: 'username', password: 'password' })
+    await loginPage.reloadPage()
   })
 
   test('should transfer funds', async ({ page }) => {
-    await page.click('#transfer_funds_tab')
+    navbar.clickActiveTab({ tabName: TabNameInitial.TRANSFER_FUNDS })
+
     await page.selectOption('#tf_fromAccountId', '2')
     await page.selectOption('#tf_toAccountId', '2')
     await page.fill('#tf_amount', '100')
