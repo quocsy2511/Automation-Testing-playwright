@@ -17,7 +17,7 @@ export class LoginPage extends AbstractPage {
   //initialize the selector use constructor
   constructor(page: Page) {
     // this.page = page
-    super(page)
+    super(page) // Gọi constructor của AbstractPage để khởi tạo thuộc tính page.
     this.usernameInput = page.locator('#user_login')
     this.passwordInput = page.locator('#user_password')
     this.submitButton = page.locator('text=Sign in')
