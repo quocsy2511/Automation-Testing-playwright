@@ -13,7 +13,7 @@
     "tests:api": "playwright test --config=api.config.ts --project=chromium --reporter=list",
     "jenkins-server": "java -jar jenkins.war --httpPort=8080 --enable-future-java",
     "tests:tip": "playwright test --config=playwright.config.ts --project=chromium --reporter=list",
-    "tests:custom:report": "playwright test --config=customReports.config.ts --project=chromium --reporter=list "
+    "tests:custom:report": "playwright test --config=customReports.config.ts --project=chromium --reporter=report-custom.ts"
   },
   "author": "six",
   "license": "ISC",
