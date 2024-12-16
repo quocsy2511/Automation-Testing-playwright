@@ -1,11 +1,11 @@
 import { PlaywrightTestConfig } from '@playwright/test'
 
-
 //config test case
-// run with configuration : npx playwright test --config=playwright.config.ts --project=chromium  
+// run with configuration : npx playwright test --config=playwright.config.ts --project=chromium
 const config: PlaywrightTestConfig = {
   timeout: 6000, // thời gian chạy  test case vượt quá thì bị cho là fail
   retries: 0, //số lần kiểm lại nếu test case fail
+  testDir: 'tests/tips',
   use: {
     headless: true, //chay test mà không bật browser
     viewport: { width: 1280, height: 720 },
