@@ -4,13 +4,14 @@
   "description": "Automated software testing with playwright",
   "main": "index.js",
   "scripts": {
-    "tests:chrome": "playwright test --config=playwright.config.ts --project=chromium",
+    "tests:chrome": "playwright test --config=playwright.config.ts --project=chromium --reporter=list",
     "tests:firefox": "playwright test --config=playwright.config.ts --project=firefox",
     "tests:webkit": "playwright test --config=playwright.config.ts --project=webkit",
-    "tests:e2e": "playwright test --config=e2e.config.ts --project=chromium",
+    "tests:e2e": "playwright test --config=e2e.config.ts --project=chromium --reporter=list",
     "tests:visual:chromium": "playwright test --config=visual.config.ts --project=chromium",
     "tests:visual:chromium:updates": "playwright test --config=visual.config.ts --project=chromium --update-snapshots",
-    "tests:api": "playwright test --config=api.config.ts --project=chromium"
+    "tests:api": "playwright test --config=api.config.ts --project=chromium --reporter=list",
+    "jenkins-server": "java -jar jenkins.war --httpPort=8080 --enable-future-java"
   },
   "author": "six",
   "license": "ISC",

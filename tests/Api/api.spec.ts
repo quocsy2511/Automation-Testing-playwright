@@ -1,6 +1,6 @@
 import test, { expect } from '@playwright/test'
 
-test.describe.parallel.only('Testing API', () => {
+test.describe.parallel('Testing API', () => {
   const basURL = 'https://reqres.in'
 
   test('Assert response status', async ({ request }) => {
@@ -34,7 +34,7 @@ test.describe.parallel.only('Testing API', () => {
       },
     })
     const resBody = JSON.parse(await response.text())
-    console.log('🚀 ~ test ~ resBody:', resBody)
+    // console.log('🚀 ~ test ~ resBody:', resBody)
     expect(resBody.id).toBe(1000)
     expect(resBody.name).toBe('Chi sau dam boc')
     expect(resBody.job).toBe('automation tester')
@@ -48,7 +48,7 @@ test.describe.parallel.only('Testing API', () => {
       },
     })
     const resBody = JSON.parse(await response.text())
-    console.log('🚀 ~ test ~ resBody:', resBody)
+    // console.log('🚀 ~ test ~ resBody:', resBody)
 
     expect(response.status()).toBe(200)
     expect(resBody.token).toBeTruthy()
@@ -61,7 +61,7 @@ test.describe.parallel.only('Testing API', () => {
       },
     })
     const resBody = JSON.parse(await response.text())
-    console.log('🚀 ~ test ~ resBody:', resBody)
+    // console.log('🚀 ~ test ~ resBody:', resBody)
 
     expect(response.status()).toBe(400)
     expect(resBody.error).toBeTruthy()
@@ -75,7 +75,7 @@ test.describe.parallel.only('Testing API', () => {
       },
     })
     const resBody = JSON.parse(await response.text())
-    console.log('🚀 ~ test.only ~ resBody:', resBody)
+    // console.log('🚀 ~ test.only ~ resBody:', resBody)
 
     expect(response.status()).toBe(200)
     expect(resBody.name).toBe('morpheus')
@@ -83,7 +83,7 @@ test.describe.parallel.only('Testing API', () => {
     expect(resBody.updatedAt).toBeTruthy()
   })
 
-  test.only('DELETE user success', async ({ request }) => {
+  test('DELETE user success', async ({ request }) => {
     const response = await request.delete(`${basURL}/api/users/2`)
     expect(response.status()).toBe(204)
   })
