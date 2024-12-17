@@ -4,21 +4,12 @@
   "description": "Automated software testing with playwright",
   "main": "index.js",
   "scripts": {
-    "test": "codeceptjs run",
-    "test:e2e": "codeceptjs run e2e_test.ts",
-    "test:gpo": "codeceptjs gpo"
+    "test": "codeceptjs run"
   },
   "author": "six",
   "license": "ISC",
   "dependencies": {
     "@playwright/test": "^1.49.1",
-    "codeceptjs": "^3.6.10",
-    "playwright": "^1.49.1",
     "prettier": "^3.4.2"
-  },
-  "devDependencies": {
-    "@types/node": "^22.10.2",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.7.2"
   }
 }
