@@ -4,12 +4,15 @@
   "description": "Automated software testing with playwright",
   "main": "index.js",
   "scripts": {
-    "scraper": ""
+    "test": "./node_modules/mocha/bin/mocha.js --timeout=30000 ./tests"
   },
   "author": "six",
   "license": "ISC",
   "dependencies": {
     "@playwright/test": "^1.49.1",
+    "@types/mocha": "^10.0.10",
+    "chai": "^5.1.2",
+    "mocha": "^11.0.1",
     "prettier": "^3.4.2"
   }
 }
