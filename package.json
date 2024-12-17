@@ -4,8 +4,9 @@
   "description": "Automated software testing with playwright",
   "main": "index.js",
   "scripts": {
-    "test": "npx cucumber-js --require cucumber.js --require step-definitions/**/*.js -f json:cucumber_report.json",
-    "report": "node reporter.js"
+    "test": "codeceptjs run",
+    "test:e2e": "codeceptjs run e2e_test.ts",
+    "test:gpo": "codeceptjs gpo"
   },
   "author": "six",
   "license": "ISC",
