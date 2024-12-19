@@ -6,7 +6,7 @@ This repository contains a collection of automation testing projects using [Play
 
 ## Branches Overview
 
-- **main**: Contains the base setup and sample tests using Playwright , Includes basic CI/CD setup using [Jenkins](https://www.jenkins.io/).
+- **main**: Contains the base setup and sample tests using Playwright Includes basic CI/CD setup using [Jenkins](https://www.jenkins.io/).
 - **codeCeptJs**: Implements [CodeceptJS](https://codecept.io/) with Playwright for writing test scripts.
 - **cucumber**: Uses [Cucumber](https://cucumber.io/) with Gherkin syntax to structure test cases.
 - **mocha**: Integrates [Mocha](https://mochajs.org/) as the testing framework with Playwright.
@@ -44,35 +44,61 @@ This repository contains a collection of automation testing projects using [Play
 
 ## Running Tests
 
-- **Run all tests**:
+Tests can be run using the pre-configured scripts in the `package.json` file. Below are some common commands:
+
+- **Run tests in Chromium**:
 
   ```bash
-  npx playwright test
+  npm run tests:chrome
   ```
 
-- **Generate an HTML report**:
+- **Run tests in Firefox**:
 
   ```bash
-  npx playwright test --reporter=html
+  npm run tests:firefox
   ```
 
-- **Run tests in a specific browser** (e.g., Chromium):
+- **Run tests in WebKit**:
 
   ```bash
-  npx playwright test --project=chromium
+  npm run tests:webkit
   ```
 
-- **Run tests in headed mode**:
+- **Run end-to-end tests**:
 
   ```bash
-  npx playwright test --headed
+  npm run tests:e2e
+  ```
+
+- **Run visual regression tests in Chromium**:
+
+  ```bash
+  npm run tests:visual:chromium
+  ```
+
+  Update snapshots for visual regression:
+
+  ```bash
+  npm run tests:visual:chromium:updates
+  ```
+
+- **Run API tests**:
+
+  ```bash
+  npm run tests:api
+  ```
+
+- **Run with a custom reporter**:
+
+  ```bash
+  npm run tests:custom:report
   ```
 
 ---
 
 ## Test Report
 
-After running tests with the `--reporter=html` option, open the generated report:
+After running tests with the `--reporter` option, check the report according to the specified configuration. For example, use the HTML report:
 
 ```bash
 playwright-report/index.html
@@ -82,7 +108,13 @@ playwright-report/index.html
 
 ## CI/CD with Jenkins
 
-The `jenkins` branch contains basic configurations for setting up CI/CD pipelines using Jenkins. Ensure Jenkins is installed and properly configured to integrate with this project.
+The `jenkins` branch contains basic configurations for setting up CI/CD pipelines using Jenkins. Start Jenkins locally with:
+
+```bash
+npm run jenkins-server
+```
+
+Ensure Jenkins is installed and properly configured to integrate with this project.
 
 ---
 
