@@ -1,5 +1,6 @@
 import test, { expect } from '@playwright/test'
 
+// các test case sẽ chạy song song
 test.describe.parallel('Testing API', () => {
   const basURL = 'https://reqres.in'
 
